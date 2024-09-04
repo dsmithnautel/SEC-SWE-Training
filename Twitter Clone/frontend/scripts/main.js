@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', loadPosts);
 
-document.getElementById('post-btn').addEventListener('click', async () => {
-    const content = document.getElementById('post-content').value;
-    const username = document.getElementById('user-name').value || 'Guest';
+document.getElementById('postBtn').addEventListener('click', async () => {
+    const content = document.getElementById('postContent').value;
+    const userName = document.getElementById('userName').value || 'Guest';
 
     if (content.length > 0 && content.length <= 280) {
         await fetch('http://localhost:3500/tweet', {
@@ -11,7 +11,7 @@ document.getElementById('post-btn').addEventListener('click', async () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username,
+                username: userName,
                 tweet: content
             })
         });
@@ -19,10 +19,10 @@ document.getElementById('post-btn').addEventListener('click', async () => {
     }
 });
 
-document.getElementById('post-content').addEventListener('input', () => {
-    const counter = document.getElementById('character-counter');
-    const content = document.getElementById('post-content').value;
-    const button = document.getElementById('post-btn');
+document.getElementById('postContent').addEventListener('input', () => {
+    const counter = document.getElementById('characterCounter');
+    const content = document.getElementById('postContent').value;
+    const button = document.getElementById('postBtn');
     counter.textContent = `${content.length}/280`;
 
     if (content.length > 280) {
@@ -34,8 +34,8 @@ document.getElementById('post-content').addEventListener('input', () => {
     }
 });
 
-document.getElementById('post-content').addEventListener('input', () => {
-    const textArea = document.getElementById('post-content');
+document.getElementById('postContent').addEventListener('input', () => {
+    const textArea = document.getElementById('postContent');
     textArea.style.height = 'auto';
     textArea.style.height = textArea.scrollHeight + 'px';
 });
@@ -45,28 +45,28 @@ async function loadPosts() {
         const response = await fetch('http://localhost:3500/tweet');
         const tweets = await response.json();
         
-        const feed = document.querySelector('.posts-feed');
+        const feed = document.querySelector('.postsFeed');
         tweets.reverse().forEach(tweet => {
             const postDiv = document.createElement('div');
-            postDiv.classList.add('post-item');
+            postDiv.classList.add('postItem');
             
             const userDiv = document.createElement('div');
-            userDiv.classList.add('post-user');
+            userDiv.classList.add('postUser');
             userDiv.textContent = tweet.username;
             
             const contentDiv = document.createElement('div');
-            contentDiv.classList.add('post-content');
+            contentDiv.classList.add('postContent');
             contentDiv.textContent = tweet.tweet;
             
             const dateDiv = document.createElement('div');
-            dateDiv.classList.add('post-date');
+            dateDiv.classList.add('postDate');
             dateDiv.textContent = tweet.date;
             
             postDiv.appendChild(userDiv);
             postDiv.appendChild(contentDiv);
             postDiv.appendChild(dateDiv);
             
-            feed.insertBefore(postDiv, document.getElementById('feed-bottom'));
+            feed.insertBefore(postDiv, document.getElementById('feedBottom'));
         });
     } catch (error) {
         console.error('Failed to load posts:', error);

@@ -11,7 +11,7 @@ body {
   margin: 0 auto 25px;
 }
 
-.input-section {
+.inputSection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,14 +19,22 @@ body {
   padding-bottom: 20px;
 }
 
-#user-name {
+#characterCounter {
+  align-self: flex-start;
+  margin-left: 20%;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+#userName {
   font-size: 18px;
   width: 60%;
   padding: 10px;
   margin-bottom: 15px;
 }
 
-#post-content {
+#postContent {
   width: 100%;
   max-width: 600px;
   font-size: 18px;
@@ -36,15 +44,7 @@ body {
   resize: none;
 }
 
-#character-counter {
-  align-self: flex-start;
-  margin-left: 20%;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #555;
-}
-
-#post-btn {
+#postBtn {
   background-color: #1da1f2;
   color: white;
   border-radius: 25px;
@@ -56,25 +56,25 @@ body {
   transition: opacity 0.2s;
 }
 
-#post-btn:hover {
+#postBtn:hover {
   opacity: 1;
 }
 
-.posts-feed {
+.postsFeed {
   margin-top: 40px;
 }
 
-.post-item {
+.postItem {
   margin-bottom: 30px;
 }
 
-.post-user {
+.postUser {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-.post-date {
+.postDate {
   font-size: 14px;
   color: #999;
   margin-top: 12px;
